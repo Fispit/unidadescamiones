@@ -1,11 +1,9 @@
 from sqlalchemy import create_engine
-from flask import Flask,jsonify,render_template
-import pandas as pd
+from flask import Flask,jsonify
 from sqlalchemy.ext.automap import automap_base
 import ast
 import matplotlib.path as mplPath
 import numpy as np
-import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
@@ -14,7 +12,7 @@ import urllib
 from apscheduler.schedulers.background import BackgroundScheduler
 
 engine = create_engine('postgresql://postgres:testpassword@unidades-db.cuzb9dl0k6mc.us-east-2.rds.amazonaws.com:5432/postgres')
-#Engine url with password included
+#Engine url with password included, database will be removed at some point in the short future.
 
 
 #Functions used to update the database
@@ -40,7 +38,7 @@ def loc_alcaldias_json(x):#This function finds if a point is inside a polygon
         if inalc:
             return x["alcaldia"]
 
-def update_db():
+def update_db():#the data source is static, so this function would update the database as if it was from a dynamic data source.
     print("Updating database...")
     limit=2 #designates the maximum amount of updated data that is read from the data source
     #Gets data from the data source
